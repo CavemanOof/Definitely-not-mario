@@ -1,0 +1,29 @@
+void powerUp()
+{
+  if(pwrUpProb > 0 && pwrUpProb < 100)
+  {
+    spaghPwrUp();
+  }
+}
+void spaghPwrUp()
+{
+image(spaghetti, spaghX, 425, 100, 75);
+    spaghPwrUpDrop = true;
+    
+    if(spaghPwrUpDrop == true && giuX + 75 > 225 && giuX < 300 && giuY + 50 > 425)
+  {
+    spaghX = -999;
+    spaghPwrUp = true;
+  }
+  
+  if(spaghPwrUp == true)
+  {
+    giuSizeX = 85;
+    giuSizeY = 105;
+    giuHealth = 2;
+    giuY = 405;
+    giuY = giuY + giuYSpd;
+    println(giuYSpd);
+   
+  }
+}
