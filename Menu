@@ -1,0 +1,59 @@
+void menu()
+{
+  //ground
+  fill(22, 171, 5);
+  rect(0, 450, 999999999, 200);
+  //castle
+  fill(56, 5, 1);
+  rect(550, 325, 200, 200);
+  rect(550, 275, 30, 50);    
+  rect(635, 275, 30, 50);
+  rect(720, 275, 30, 50);
+  fill(0);
+  arc(650, 400, 100, 100, PI, TWO_PI);
+  rect(600, 400, 100, 50);
+  //flagpole
+  fill(112);
+  rect(100, 100, 10, 400);
+  image(italy, 111, 100, 100, 65);
+  //characters
+  image(guiseppe, 625, 375, 50, 75);
+  image(giuseppe, 400, 425, 50, 75);
+  //title and buttons
+  image(title, 50, 50, 700, 50);
+  image(start, 50, 150, 200, 50);
+}
+void menuButtons()
+{
+  //button hitboxes
+  if(mouseX > 50 && mouseX < 250 && mouseY > 150 && mouseY < 200 && stage == 0)
+  {
+    stage = 1;
+    //select.play();
+  }
+  else if (mouseX > 50 && mouseX < 250 && mouseY > 150 && mouseY < 200 && stage == 1)
+  {
+    stage = 2;
+    //select.play();
+  }
+}
+void levelSelect()
+{
+  fill(22, 171, 5);
+  rect(0, 450, 999999999, 200);
+  fill(56, 5, 1);
+  rect(550, 325, 200, 200);
+  rect(550, 275, 30, 50);
+  rect(635, 275, 30, 50);
+  rect(720, 275, 30, 50);
+  fill(0);
+  arc(650, 400, 100, 100, PI, TWO_PI);
+  rect(600, 400, 100, 50);
+  fill(112);
+  rect(100, 100, 10, 400);
+  image(italy, 111, 100, 100, 65);
+  image(guiseppe, 625, 375, 50, 75);
+  image(giuseppe, 400, 425, 50, 75);
+  image(title, 50, 50, 700, 50);
+  image(level1, 50, 150, 200, 50);
+}
