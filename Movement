@@ -1,0 +1,61 @@
+void giuMovement()
+{
+  if (key == 'd')//right movement, sets values for continuing movement during a jump
+  {
+    giuXSpd = 2;
+    jumpRight = true;
+    jumpLeft = false;
+  }
+  if (key == 'a')//left movement
+  {
+    
+    giuXSpd = -2;
+    jumpLeft = true;
+    jumpRight = false;
+  }
+ 
+  if (key == ' ') // initiates Giuseppe's jump
+  {
+    
+    jump = true;
+    if (giuY > 424 && jumpRight == true && jumpLeft == false )//checking what direction Giusepe should be moving in while jumping
+    {
+      
+      giuYSpd = -4;
+      
+      giuXSpd = 2;
+    }
+    else if (giuY > 424 && jumpLeft == true && jumpLeft == false)
+    {
+      giuYSpd = -4;
+      giuXSpd = -2;
+    }
+    else if (giuY > 424) // if no other keys are pressed, jump directly upwards
+    {
+      giuYSpd = -4;
+    }
+  }
+}
+void giuMovementEnd()
+{
+  if( key == 'd' || key == 'a' )// gets rid of any previously recorded movement when the left or right keys are released, also stops character movement
+  {
+  giuXSpd = 0;
+  jumpRight = false;
+  jumpLeft = false;
+  }
+}
+void giuJump()//makes giuseppe come back down at a certain height and stop at the ground
+{
+  if(giuYSpd > 0 || giuYSpd < 0)
+  {
+    giuYSpd = giuYSpd + 0.07;
+    
+  }
+  if(giuY > 425)
+  {
+    giuYSpd = 0;
+    giuY = 425;
+    jump = false;
+  }
+}
