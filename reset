@@ -1,0 +1,20 @@
+void reset()
+{
+
+  background(0);
+  image(reset, 200, 200, 400, 50);
+  image(try_again, 250, 400, 300, 50);
+  noFill();
+  stroke(255);
+  rect(200, 375, 400, 100);
+}
+void resetButtons()
+{
+  if( mouseX > 200 && mouseX < 600 && mouseY > 375 && mouseY < 475)
+  {
+   
+   stage = 2;
+   giuHealth = giuHealth + 1;
+  }
+}
+//mouseX > 200 && mouseX < 600 &&
