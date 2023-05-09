@@ -1,0 +1,43 @@
+void enemies()
+{
+  cheesePos[0] = 325;
+  ////cheesePos[1]
+  ////cheesePos[2]
+  ////cheesePos[3]
+  
+  
+      
+    image(cheese, x, 425, 75, 100);
+    if( giuX + 50 > cheesePos[0] && giuX < cheesePos[0] + 75 && giuY - 75 > 325 && giuY - 75 < 327 && enemy1Killed == false)
+      {
+        giuYSpd = -4;
+        enemy1Killed = true;
+        pwrUpProb = int(random(100));
+        println(pwrUpProb);
+        powerUp();
+      }
+    if(enemy1Killed == true)
+    {
+      x = -999;
+    }
+    else
+    {
+      x = cheesePos[0];
+    }
+    if(giuX + 50 > cheesePos[0] && giuX < cheesePos[0] + 75 && giuY - 75 > 327 && enemy1Killed == false)
+    {
+      giuHealth = giuHealth - 1;
+      
+    }
+    if(giuHealth == 0)
+    {
+      lives = lives - 1;
+      stage = 5;
+    }
+    if(giuHealth == 0 && lives == 0)
+    {
+      stage = 6;
+    }
+   
+    
+}
