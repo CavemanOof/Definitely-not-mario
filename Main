@@ -1,0 +1,165 @@
+//images
+PImage giuseppe;
+PImage cheese;
+PImage katana;
+PImage meatball;
+PImage spaghetti;
+PImage sun;
+PImage italy;
+PImage guiseppe;
+PImage title;
+PImage start;
+PImage level1;
+PImage reset;
+PImage try_again;
+PImage game_over;
+PImage giuLives;
+PImage giuLivesLost;
+//position of Giuseppe
+float giuX = 0,giuY = 425;
+float giuSizeX = 50, giuSizeY = 75;
+float giuXSpd;
+float giuYSpd;
+//left and right midair movement
+boolean jumpRight;
+boolean jumpLeft;
+boolean jump;
+//makes the enemy dissapear if it's been stomped on 
+boolean enemy1Killed;
+//tracks what enemy has been hit
+float enemyHit = 999;
+float prevEnemyHit = -1;
+//array that specifys the location of the enemies
+float[] cheesePos = new float[10];
+float x;
+//swaps between menu, gameplay, etc.
+int stage = 0;
+float enemiesHit = -1;
+int pwrUpProb;
+boolean spaghPwrUpDrop;
+float spaghX = 225;
+float giuHealth = 1;
+boolean spaghPwrUp;
+int lives = 3;
+int level;
+
+//import processing.sound.*;
+//SoundFile select;
+
+void setup()
+{
+  size(800, 600);
+  giuseppe = loadImage("giuseppe.png");
+  cheese = loadImage("cheese.png");
+  katana = loadImage("katana.png");
+  meatball = loadImage("meatball.png");
+  spaghetti = loadImage("spaghetti.png");
+  sun = loadImage("sun.png");
+  italy = loadImage("italy.png");
+  guiseppe = loadImage("guiseppe.png");
+  title = loadImage("Title.png");
+  start = loadImage("Start.png");
+  level1 = loadImage("level_1.png");
+  reset = loadImage("reset.png");
+  try_again = loadImage("Try_Again.png");
+  game_over = loadImage("Game_Over.png");
+  giuLives = loadImage ("Decapitated.png");
+  giuLivesLost = loadImage("black_giuseppe.png");
+  //select = new SoundFile(this, "select_sfx.mp3");
+}
+
+void draw()
+{
+  println(jump);
+  background (4, 135, 217);
+  if (stage == 0)
+  {
+    menu();
+  }
+  else if (stage == 1)
+  {
+    levelSelect();
+  }
+  else if (stage == 2)
+  {
+   cam();
+  basicShapes();
+  giuJump();
+  enemies();
+  powerUp();
+  level = 1;
+  }
+  else if(stage == 5)
+  {
+    reset();
+  }
+  else if(stage == 6)
+  {
+    gameOver();
+  }
+  
+}
+void mouseReleased()
+{
+  
+  if(stage == 0 || stage == 1)
+  {
+  menuButtons();
+  }
+  if(stage == 5)
+  {
+    giuHealth = 1;
+    giuX = 0;
+    resetButtons();
+  }
+}
+
+void keyPressed()
+{
+  giuMovement();
+}
+
+void keyReleased()
+{
+  giuMovementEnd();
+  
+}
+
+void basicShapes()
+{
+  //draws the background and basic shapes
+  stroke(0);
+  fill(22, 171, 5);
+  rect(0, 450, 999999999, 200);
+  image(giuseppe, giuX, giuY, giuSizeX, giuSizeY);
+  giuX = giuX + giuXSpd;
+  giuY = giuY + giuYSpd;
+  for(int i=0; i<10000; i++)
+  {
+    rect(i*50, 100, 50, 50);
+  }
+  if(lives == 3)
+  {
+    image(giuLives, giuX - 340, 40, 50, 50);
+    image(giuLives, giuX - 280, 40, 50, 50);
+    image(giuLives, giuX - 220, 40, 50, 50);
+  }
+  else if(lives == 2)
+  {
+    image(giuLives, giuX - 340, 40, 50, 50);
+    image(giuLives, giuX - 280, 40, 50, 50);
+    image(giuLivesLost, giuX - 220, 40, 50, 50);
+  }
+  else if(lives == 1)
+  {
+    image(giuLives, giuX - 340, 40, 50, 50);
+    image(giuLivesLost, giuX - 280, 40, 50, 50);
+    image(giuLivesLost, giuX - 220, 40, 50, 50);
+  }
+}
+
+void cam()
+{
+  translate(-giuX +350, 0);
+  
+}
